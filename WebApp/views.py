@@ -10,11 +10,6 @@ class IndexView(View):
 	def get(self, request):	
 		return render(self.request, 'main.html')
 		
-class LoginView(View):
-
-	def get(self, request):
-		return render(self.request, 'login.html')
-
 class StudentView(View):
 
 	def get(self, request):
@@ -32,6 +27,7 @@ class LoginView(View):
 		username = request.POST.get('student_id')
 		password = request.POST.get('password')
 		username = Student.objects.get(student_id=username)
+		print(username)
 		username = username.user_id.username
 		user = authenticate(username = username, password =password)
 		if user is not None:

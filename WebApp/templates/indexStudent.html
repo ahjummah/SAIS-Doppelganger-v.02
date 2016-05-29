@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+</head>
+<body>
+<form  action="{% url 'WebApp:viewIndexS' %}" method="GET" id="indexForm">
+	{% csrf_token %} 
+Welcome, {{ user }}! 
+
+	<a href="{% url 'WebApp:logout' %}">Log out</a><br>
+	<a href="{% url 'WebApp:addclass' %}">Add Class</a>
+
+</form>
+
+</body>
+</html>

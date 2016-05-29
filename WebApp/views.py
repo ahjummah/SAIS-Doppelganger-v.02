@@ -1,26 +1,39 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View, DetailView
 from WebApp.models import Student, SchoolInfo, Subjects
 from django.template import Context
+
 class IndexView(View):
 	
 	def get(self, request):	
 		return render(self.request, 'main.html')
 		
-class StudentView(View):
 
+class StudentView(View):
 	def get(self, request):
-		context = {}
-		context['user'] = request.user
+		if not request.user.is_authenticated():
+			return render(self.request, 'login.html')
+		else:
+		 context = {}
+		 context['user'] = request.user
 		return render(self.request,'indexStudent.html',context=context)
+
+	
 
 class LoginView(View):
 	"""docstring for LoginView"""
+
+
 	def get(self, request):
-		return render(self.request, 'login.html')
+		if not request.user.is_authenticated():
+			return render(self.request, 'login.html')
+		else:
+			return redirect('WebApp:viewIndexS')
 
 	def post(self, request):
 		user = User()
@@ -38,14 +51,6 @@ class LoginView(View):
 		else:  # Return an 'invalid login' error message.
 			print("The username and password were incorrect.")
 			return render(self.request, 'login.html')
-
-class LogoutView(View):
-	def get(self, request):
-		return redirect('WebApp:logout')	
-
-	def post(self, request):
-		logout(request, user)
-		
 
 class RegistrationView(View):
 	
@@ -99,25 +104,25 @@ class SearchClassView(View):
 class EditView(View):
 	
 	def get(self, request):
-
-	    student_object = Student.objects.filter(user_id=request.user)
-	    schoolinfo_object = SchoolInfo.objects.filter(student_id=student_object)
-	   
-
-	    dictionary = {
-	    	'firstname': student_object.get().fname,
-	    	'middlename': student_object.get().mname,
-	    	'lastname': student_object.get().lname,
-	    	'address': student_object.get().address,
-	    	'gender': student_object.get().gender,
-	    	'maritalstatus': student_object.get().maritalstatus,
-	    	'student_id': student_object.get().student_id,
-	    	'email': student_object.get().email,
-	    	'course': schoolinfo_object.get().course,
-	    	'year': schoolinfo_object.get().year,
-	    	'sts_code': schoolinfo_object.get().sts_code,
-	    	}
-	    return render(self.request, 'EditProfile.html', dictionary)
+		if request.user.is_authenticated():
+		    student_object = Student.objects.filter(user_id=request.user)
+		    schoolinfo_object = SchoolInfo.objects.filter(student_id=student_object)
+		    dictionary = {
+		    	'firstname': student_object.get().fname,
+		    	'middlename': student_object.get().mname,
+		    	'lastname': student_object.get().lname,
+		    	'address': student_object.get().address,
+		    	'gender': student_object.get().gender,
+		    	'maritalstatus': student_object.get().maritalstatus,
+		    	'student_id': student_object.get().student_id,
+		    	'email': student_object.get().email,
+		    	'course': schoolinfo_object.get().course,
+		    	'year': schoolinfo_object.get().year,
+		    	'sts_code': schoolinfo_object.get().sts_code,
+		    	}
+		    return render(self.request, 'EditProfile.html', dictionary)
+		else:
+			return render(self.request, 'login.html')
 
 	def post(self, request):
 
@@ -145,12 +150,6 @@ class EditView(View):
 		student_objects.update(email = email)
 		schoolinfo_objects.update(course=course)
 		schoolinfo_objects.update(year=year)
-
-		# studentInfo.student_id = student
-		# studentInfo.course = request.POST['course']
-		# studentInfo.year = request.POST['year']
-		# studentInfo.sts_code = request.POST['sts_code']
-		# studentInfo.save()
 
 		return render(self.request, 'main.html')
 

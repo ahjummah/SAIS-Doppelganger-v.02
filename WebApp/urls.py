@@ -8,6 +8,8 @@ urlpatterns = [
 	url(r'^login$', LoginView.as_view(), name = 'login'),
 	url(r'^profile$', StudentView.as_view(), name = 'viewIndexS'),
 	url(r'^edit$', EditView.as_view(), name = 'edit'),
-	url(r'^logout$', LogoutView.as_view(), name = 'logout'),
+	#url(r'^logout$', LogoutView.as_view(), name = 'logout'),
 	url(r'^addclass$', SearchClassView.as_view(), name = 'addclass'),
+	url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/WebApp/login'}, name='logout'),
+
 ]

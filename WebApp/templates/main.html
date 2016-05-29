@@ -3,23 +3,50 @@
 <html>
 <head>
 	<title>Student Access Information System</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/bootstrap.css' %}">
 </head>
-<body background="grey-bg.png">
-<table width=auto align="center" cellspacing="0" cellpadding="0" >
-	<td>
+
+<body>
 	<div id = header>
-		<img src=" {% static 'WebApp/img/hd.jpg' %} "q/>
+	<div class="container-fluid">
+	  <div class="row">
+			<div class="col-xs-10 col-md-1">
+				<img src="{% static 'WebApp/img/uplogo.png' %}" width="100px" height="100px">
+			</div>
+			<div class="col-xs-10 col-md-7">
+				<h2>Student Access Information System</h2>
+				<p class = header>University of the Philippines Cebu</p>
+
+			</div>
+			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+	  </div>
 	</div>
-	
-	<table bgcolor="white" cellpadding="20">
-	<div id = links> 
-		<a href="{% url 'WebApp:register' %}">Register an Account</a>
-		<a href="{% url 'WebApp:login' %}">Log in</a>
+
 	</div>
-	</td>
+
+	<div class="container-fluid">
+	  <div class="row">
+		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+	  </div>
+	</div>
+
+
+	<table width=auto align="center" cellspacing="0" cellpadding="0" >
+		<td>
+		
+		
+		<table bgcolor="white" cellpadding="20">
+		<div id = links> 
+			<a href="{% url 'WebApp:register' %}">Register an Account</a>
+			<a href="{% url 'WebApp:login' %}">Log in</a>
+		</div>
+		</td>
+		</table>
+		
 	</table>
-	
-</table>
 
 </body>
 </html>

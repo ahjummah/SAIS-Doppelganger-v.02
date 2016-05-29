@@ -1,0 +1,42 @@
+.login{
+	background-color: #670000;
+	padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    color: white;
+    max-width: 350px;
+    border-radius: 15px;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+
+img.logo {
+    margin-right: 10px;
+    margin-left: 10px;
+      position: relative;
+  transform: translateY(0%);
+
+}
+
+p.profile{
+    display: inline-block;
+    font-size: 200%;
+
+
+}
+
+#header{
+	background-color: #670000;
+	padding : 10px;
+	color: white;
+}

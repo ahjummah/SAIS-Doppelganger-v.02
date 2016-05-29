@@ -223,7 +223,7 @@ th {
   }
   tr,
   img {
-    page-break-inside: avoid;
+    page-break-innav: avoid;
   }
   img {
     max-width: 100% !important;
@@ -1097,7 +1097,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: white;
   text-decoration: none;
 }
 a:hover,
@@ -4015,6 +4015,34 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   overflow: hidden;
   background-color: #e5e5e5;
 }
+.nav .nav-sidebar{
+  color: white;
+}
+.sidebar {
+  background-color: #9B0000;
+}
+@media (min-width: 768px){
+.sidebar {
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #9B0000;
+    border-right: 1px solid #eee;
+  }
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+
 .nav > li > a > img {
   max-width: none;
 }
@@ -4168,15 +4196,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
+  min-height: 80px;
 }
-@media (min-width: 768px) {
-  .navbar {
-    border-radius: 4px;
-  }
-}
+
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
@@ -4229,6 +4251,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .container > .navbar-header,
 .container-fluid > .navbar-header,
+  .container > .sidebar,
+  .container-fluid > .sidebar,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
   margin-right: -15px;
@@ -4237,6 +4261,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .container > .navbar-header,
   .container-fluid > .navbar-header,
+  .container > .sidebar,
+  .container-fluid > .sidebar,
   .container > .navbar-collapse,
   .container-fluid > .navbar-collapse {
     margin-right: 0;
@@ -4279,7 +4305,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   height: 50px;
   padding: 15px 15px;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 10px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4461,7 +4487,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom-left-radius: 0;
 }
 .navbar-btn {
-  margin-top: 8px;
+  margin-top: 15px;
   margin-bottom: 8px;
 }
 .navbar-btn.btn-sm {
@@ -4473,7 +4499,21 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 14px;
 }
 .navbar-text {
+  color: white;
+  font-size: 35px;
   margin-top: 15px;
+  margin-bottom: 15px;
+}
+.navbar-text-small{
+  color: white;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.navbar-text-smaller{
+  color: white;
+  font-size: 18px;
+  margin-top: 27px;
   margin-bottom: 15px;
 }
 @media (min-width: 768px) {
@@ -4482,7 +4522,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-right: 15px;
     margin-left: 15px;
   }
+  .navbar-text-small {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
 }
+
 @media (min-width: 768px) {
   .navbar-left {
     float: left !important;
@@ -4496,8 +4542,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #670000;
+  border-color: #4F0000;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4508,7 +4554,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #777;
+  color: white;
 }
 .navbar-default .navbar-nav > li > a {
   color: #777;
@@ -4518,6 +4564,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #333;
   background-color: transparent;
 }
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -6479,6 +6526,8 @@ button.close {
 .btn-group-vertical > .btn-group:after,
 .nav:before,
 .nav:after,
+.sidebar:before,
+.sidebar:after,
 .navbar:before,
 .navbar:after,
 .navbar-header:before,
@@ -6506,6 +6555,7 @@ button.close {
 .btn-group-vertical > .btn-group:after,
 .nav:after,
 .navbar:after,
+.sidebar:after,
 .navbar-header:after,
 .navbar-collapse:after,
 .pager:after,

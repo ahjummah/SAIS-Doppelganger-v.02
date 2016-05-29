@@ -20,7 +20,35 @@ class StudentView(View):
 	def get(self, request):
 		context = {}
 		context['user'] = request.user
-		return render(self.request,'indexStudent.html',context=context)
+		return render(self.request,'indexStudent-Profile.html',context=context)
+
+class StudentViewSchedule(View):
+
+	def get(self, request):
+		context = {}
+		context['user'] = request.user
+		return render(self.request,'indexStudent-Schedule.html',context=context)
+
+class StudentViewAccount(View):
+
+	def get(self, request):
+		context = {}
+		context['user'] = request.user
+		return render(self.request,'indexStudent-Account.html',context=context)
+
+class StudentEnlist(View):
+
+	def get(self, request):
+		return render(self.request, 'indexStudent-Enlist.html')
+
+
+	def post(self, request):
+		keyword = request.POST.get('searchbox')
+		print("Keyword is: " + keyword)
+		context = {}
+		context['subjectcode'] = Subjects.objects.filter(subject_code__icontains=keyword)
+		return render(self.request,'indexStudent-Enlist.html',context=context)
+
 
 class LoginView(View):
 	"""docstring for LoginView"""
@@ -87,18 +115,7 @@ class RegistrationView(View):
 
 		return render(self.request, 'main.html')
 
-class AddClassView(View):
 
-	def get(self, request):
-		return render(self.request, 'AddClass.html')
-
-
-	def post(self, request):
-		keyword = request.POST.get('searchbox')
-		print("Keyword is: " + keyword)
-		context = {}
-		context['subjectcode'] = Subjects.objects.filter(subject_code__icontains=keyword)
-		return render(self.request,'AddClass.html',context=context)
 
 class EditView(View):
 	

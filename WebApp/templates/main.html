@@ -8,33 +8,32 @@
 </head>
 
 <body>
-<div id = header>
-		<!-- <img src=" {% static 'WebApp/img/hd.jpg' %} "> -->
+	<div id = header>
+	<img src="{% static 'WebApp/img/uplogo.png' %}" width="110px" height="110px">
+	</div>
+
+	<div class="container-fluid">
+	  <div class="row">
+		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+	  </div>
+	</div>
+
+
+	<table width=auto align="center" cellspacing="0" cellpadding="0" >
+		<td>
 		
-	</div>
-
-<div class="container-fluid">
-  <div class="row">
-	  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-	  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-	  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  </div>
-</div>
-
-
-<table width=auto align="center" cellspacing="0" cellpadding="0" >
-	<td>
-	
-	
-	<table bgcolor="white" cellpadding="20">
-	<div id = links> 
-		<a href="{% url 'WebApp:register' %}">Register an Account</a>
-		<a href="{% url 'WebApp:login' %}">Log in</a>
-	</div>
-	</td>
+		
+		<table bgcolor="white" cellpadding="20">
+		<div id = links> 
+			<a href="{% url 'WebApp:register' %}">Register an Account</a>
+			<a href="{% url 'WebApp:login' %}">Log in</a>
+		</div>
+		</td>
+		</table>
+		
 	</table>
-	
-</table>
 
 </body>
 </html>

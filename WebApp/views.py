@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View, DetailView
 from WebApp.models import Student, SchoolInfo, Subjects
 from django.template import Context
@@ -87,7 +87,7 @@ class RegistrationView(View):
 
 		return render(self.request, 'main.html')
 
-class AddClassView(View):
+class SearchClassView(View):
 
 	def get(self, request):
 		return render(self.request, 'AddClass.html')
@@ -125,6 +125,38 @@ class EditView(View):
 
 	def post(self, request):
 
+		#Entry.objects.filter(pub_date__year=2007).update(headline='Everything is the same')
+		student_objects = Student.objects.filter(user_id=request.user)
+		schoolinfo_objects = SchoolInfo.objects.filter(student_id=student_objects)
+		print("I AM HERE!!" + student_objects.get().lname)
+		firstname = request.POST['fname']
+		middlename = request.POST['mname']
+		lastname = request.POST['lname']
+		address = request.POST['address']
+		gender = request.POST['gender']
+		maritalstatus = request.POST['maritalstatus']
+		email = request.POST['email']
+		course = request.POST['course']
+		year = request.POST['year']
+
+		student_objects.update(fname = firstname)
+		student_objects.update(mname = middlename)
+		student_objects.update(lname = lastname)
+		student_objects.update(address = address)
+		student_objects.update(gender = gender)
+		student_objects.update(maritalstatus = maritalstatus)
+		
+		student_objects.update(email = email)
+		schoolinfo_objects.update(course=course)
+		schoolinfo_objects.update(year=year)
+
+		# studentInfo.student_id = student
+		# studentInfo.course = request.POST['course']
+		# studentInfo.year = request.POST['year']
+		# studentInfo.sts_code = request.POST['sts_code']
+		# studentInfo.save()
+
 		return render(self.request, 'main.html')
+
 	
 		

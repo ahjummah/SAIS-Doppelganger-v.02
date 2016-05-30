@@ -13,7 +13,6 @@ class IndexView(View):
 	def get(self, request):	
 		return render(self.request, 'main.html')
 		
-
 class StudentView(View):
 	def get(self, request):
 		if not request.user.is_authenticated():

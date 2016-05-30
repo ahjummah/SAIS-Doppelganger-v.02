@@ -2,7 +2,7 @@
 {% load staticfiles %} 
 <html>
 <head>
-	<title>SAIS - PROFILE</title>
+	<title>SAIS - Registration</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/style.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/bootstrap.css' %}">
 </head> 
@@ -23,40 +23,41 @@
 
 	<div class="containerstyle">
 			<form action="{% url 'WebApp:register' %}" method="POST">
+			{% csrf_token %}
 				<ul class="nav no-list">
 					<label>Student Number: </label>
-					<input class="form-control type="text" name="student_id"> 
+					<input class="form-control" type="text" name="student_id"> 
 					 <br><label>First Name: </label>
-					<input class="form-control type="text" name="fname"> 
+					<input class="form-control" type="text" name="fname"> 
 					 <br><label>Middle Name: </label>
-					<input class="form-control type="text" name="mname"> 
+					<input class="form-control" type="text" name="mname"> 
 					 <br><label>Last Name: </label>
-					<input class="form-control type="text" name="lname"> 
+					<input class="form-control" type="text" name="lname"> 
 					 <br><label>Address: </label>
-					<input class="form-control type="text" name="address"> 
+					<input class="form-control" type="text" name="address"> 
 					 <br><label>Email Address: </label>
-					<input class="form-control type="text" name="email"> 
+					<input class="form-control" type="text" name="email"> 
 					 <br><label>Gender: </label>
-					<input class="form-control type="text" name="gender"> 
+					<input class="form-control" type="text" name="gender"> 
 					 <br><label>Marital Status: </label>
-					<input class="form-control type="text" name="maritalstatus"> 
+					<input class="form-control" type="text" name="maritalstatus"> 
 				</ul>
 				<br>
 				<br>
 				<ul class="nav no-list">
 					 <br><label>Course: 
-					<input class="form-control type="text" name="course"> 
+					<input class="form-control" type="text" name="course"> 
 					 <br><label>Year: 
-					<input class="form-control type="text" name="year"> 
+					<input class="form-control" type="text" name="year"> 
 					 <br><label>STS Bracket: 
-					<input class="form-control type="text" name="sts_code"> 
+					<input class="form-control" type="text" name="sts_code"> 
 				</ul>
 				<br>
 				<br>
 
 				<ul class="nav no-list">
-					 <br><label>Password: <input class="form-control type="text" name="password"> 
-					 <br><label>Input Password Again: <input class="form-control type="text" type="text" name="passwordagain"> 
+					 <br><label>Password: <input class="form-control" type="password" name="password"> 
+					 <br><label>Input Password Again: <input class="form-control" type="password" name="passwordagain"> 
 				</ul>
 				<button type="submit" name="register" class="btn btn-default">Submit</button>
 			</form>

@@ -49,35 +49,47 @@ class StudentView(View):
 		if not request.user.is_authenticated():
 			return render(self.request, 'login.html')
 		else:
-
-		#User.full_name = property(lambda u: u"%s %s" % (u.first_name, u.last_name))
-		 context = {}
-		 context['user'] = request.user.first_name
-		return render(self.request,'indexStudent-Profile.html',context=context)
+			 student_object = Student.objects.filter(user_id=request.user)
+			 schoolinfo_object = SchoolInfo.objects.filter(student_id=student_object)
+			
+		   
+			 dictionary = {
+		    	'firstname': student_object.get().fname,
+		    	'middlename': student_object.get().mname,
+		    	'lastname': student_object.get().lname,
+		    	'address': student_object.get().address,
+		    	'gender': student_object.get().gender,
+		    	'maritalstatus': student_object.get().maritalstatus,
+		    	'student_id': student_object.get().student_id,
+		    	'email': student_object.get().email,
+		    	'course': schoolinfo_object.get().course,
+		    	'year': schoolinfo_object.get().year,
+		    	'sts_code': schoolinfo_object.get().sts_code,
+		    	'user': request.user.first_name,
+		    	}
+		
+		return render(self.request,'indexStudent-Profile.html',dictionary)
+			 
 	
 
 class LoginView(View):
 	"""docstring for LoginView"""
 
-
 	def get(self, request):
 		if not request.user.is_authenticated():
 			return render(self.request, 'login.html')
 		else:
-			return redirect('WebApp:viewIndexS')
+			return render(self.request, 'indexStudent-Profile.html')
 
 	def post(self, request):
 		user = User()
 		username = request.POST.get('student_id')
 		password = request.POST.get('password')
-		username = Student.objects.get(student_id=username)
-		print(username)
-		username = username.user_id.username
 		user = authenticate(username = username, password =password)
 		if user is not None:
 		    # the password verified for the user		
 		  		login(request, user)
-		  		return redirect('WebApp:viewIndexS')
+		  		return HttpResponseRedirect('../WebApp/profile') 
 		 
 		else:  # Return an 'invalid login' error message.
 			print("The username and password were incorrect.")

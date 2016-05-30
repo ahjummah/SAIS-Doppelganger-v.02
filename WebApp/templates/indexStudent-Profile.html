@@ -23,6 +23,8 @@
 		      <ul class="nav navbar-nav navbar-right">
 		      	<li><p class="navbar-text-smaller">Welcome,</p></li>
 		        <li><p class="navbar-text-small">{{user}}</p></li>
+
+
 		        
 		        <li>
 		        	<form class="navbar-form navbar-left" action="{% url 'WebApp:logout' %}">
@@ -47,8 +49,15 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 									<div class="jumbotron">
-							  <h1>WELCOME</h1>
-							  <p>...</p>
+							  <h1>Student Information</h1>
+							  <li>Name: {{firstname}} {{middlename}} {{lastname}}</li><br>
+							  <li>Gender: {{gender}}</li><br>
+							  <li>Student ID: {{student_id}</li><br>
+							  <li>Course and Year: {{course}} - {{year}}</li><br>
+							  <li>STS Bracket: {{sts_code}}</li><br>
+							  <li>Address: {{address}}</li><br>
+							  <li>Marital Status: {{maritalstatus}}</li><br>
+							  <li>Email: {{email}}</li><br>
 							  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 							</div>
 		</div>

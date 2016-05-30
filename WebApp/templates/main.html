@@ -14,26 +14,27 @@
 			<div class="col-xs-10 col-md-1">
 				<img src="{% static 'WebApp/img/uplogo.png' %}" width="100px" height="100px">
 			</div>
-			<div class="col-xs-10 col-md-7">
+			<div class="col-xs-10 col-md-9">
 				<h2>Student Access Information System</h2>
 				<p class = header>University of the Philippines Cebu</p>
 
 			</div>
-			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+			<div class="col-xs-6 col-md-2 mainbuttons">
+				<form action="{% url 'WebApp:register' %}" method="POST" id="loginForm">
+				{% csrf_token %}
+					<button type="submit" class="btn btn-default btn-block">Register</button>
+				</form>
+				
+				<form action="{% url 'WebApp:login' %}" method="POST" id="loginForm">
+				{% csrf_token %}
+					<button type="submit" class="btn btn-success btn-block">Log In</button>
+				</form>
+			
+			</div>
 	  </div>
 	</div>
 
 	</div>
-
-	<div class="container-fluid">
-	  <div class="row">
-		  <div class="col-xs-6 col-md-4"><a href="{% url 'WebApp:register' %}">Register an Account</a>
-			<a href="{% url 'WebApp:login' %}">Log in</a></div>
-		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-	  </div>
-	</div>
-
 
 	<table width=auto align="center" cellspacing="0" cellpadding="0" >
 		<td>

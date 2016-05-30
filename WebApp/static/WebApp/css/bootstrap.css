@@ -5946,6 +5946,9 @@ button.close {
   background: transparent;
   border: 0;
 }
+.mainbuttons {
+  padding-top: 15px;
+}
 .modal-open {
   overflow: hidden;
 }

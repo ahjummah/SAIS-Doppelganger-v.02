@@ -106,8 +106,7 @@ class RegistrationView(View):
 	def post(self, request):
 		student = Student()
 		studentInfo = SchoolInfo()
-		user = User()
-
+		
 		student.fname = request.POST['fname']
 		student.mname = request.POST['mname']
 		student.lname = request.POST['lname']
@@ -124,15 +123,17 @@ class RegistrationView(View):
 		studentInfo.sts_code = request.POST['sts_code']
 		studentInfo.save()
 
-		user = User.objects.create_user(student.student_id, request.POST['email'], request.POST['password'])
+		user = User.objects.create_user(student.student_id, student.email, request.POST['password'])
+		
 		user.last_name = student.lname
 		user.first_name = student.fname
 		user.save()
+		print(user.username)
 
 		student.user_id = user;
 		student.save()
 
-		return render(self.request, 'main.html')
+		return render(self.request, 'login.html')
 
 class SearchClassView(View):
 

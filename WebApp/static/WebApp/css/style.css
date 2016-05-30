@@ -19,6 +19,24 @@
     align-items: center;
 }
 
+.containerstyle {
+    padding-top: 25px;
+        padding-left: 20px;
+        width: 500px;
+        align-items: left;
+        clear: both;
+    }
+
+.containerstyle input {
+    width: 100%;
+    align-items: left; 
+    clear: both;
+}
+
+.containerstyle label {
+    font-size: 20px;
+}
+
 
 img.logo {
     margin-right: 10px;

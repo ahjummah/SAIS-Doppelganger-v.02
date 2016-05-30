@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+<html>
+<head>
+	<title>SAIS - PROFILE</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/bootstrap.css' %}">
+</head> 
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed">
+	  	<div class="container-fluid">
+		    <div class="navbar-header">
+		    	<a class="navbar-brand" href="#">
+		    		<img alt="Brand" src="{% static 'WebApp/img/uplogo.png' %}" width="50px" height="50px">
+		    	</a>
+		    	<p class="navbar-text">Student Profile</p>
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+		      <ul class="nav navbar-nav navbar-right">
+		      	<li><p class="navbar-text-smaller">Welcome,</p></li>
+		        <li><p class="navbar-text-small">{{user}}</p></li>
+		        
+		        <li>
+		        	<form class="navbar-form navbar-left" action="{% url 'WebApp:logout' %}">
+		        		<button type="submit" class="btn btn-danger navbar-btn">Log Out</button>
+		        	</form>
+		        </li>
+
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+	  	</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li><a href="{% url 'WebApp:viewIndexS' %}">Profile</a></li>
+				<li><a href="{% url 'WebApp:schedule' %}">Schedule</a></li>
+				<li><a href="{% url 'WebApp:account' %}">Accountability</a></li>
+				<li class="active"><a href="{% url 'WebApp:enlist' %}">Enlist Subjects</a></li>
+
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+		</div>
+	</div>
+
+	
+
+
+</body>
+</html>

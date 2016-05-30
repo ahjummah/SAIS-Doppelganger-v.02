@@ -69,11 +69,8 @@ class StudentView(View):
 		
 		return render(self.request,'indexStudent-Profile.html',dictionary)
 
-
-=======
 class LoginView(View):
 	"""docstring for LoginView"""
->>>>>>> 73b3b8f1c8002df24147f4db00c2c3ab429ce9bd
 	def get(self, request):
 		if not request.user.is_authenticated():
 			return render(self.request, 'login.html')
@@ -148,7 +145,6 @@ class SearchClassView(View):
 		context = {}
 		context['subjectcode'] = Subjects.objects.filter(subject_code__icontains=keyword)
 		return render(self.request,'AddClass.html',context=context)
->>>>>>> 73b3b8f1c8002df24147f4db00c2c3ab429ce9bd
 
 
 class EditView(View):
@@ -201,7 +197,7 @@ class EditView(View):
 		schoolinfo_objects.update(course=course)
 		schoolinfo_objects.update(year=year)
 
-		return render(self.request, 'main.html')
+		return HttpResponseRedirect('../WebApp/profile') 
 
 	
 		

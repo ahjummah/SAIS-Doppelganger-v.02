@@ -1,29 +1,94 @@
 <!DOCTYPE html>
+{% load staticfiles %} 
 <html>
 <head>
-	<title>Edit</title>
-</head>
+	<title>SAIS - PROFILE</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'WebApp/css/bootstrap.css' %}">
+</head> 
+
 <body>
 
-		<h1>Edit Profile</h1>
-	<br>
-	<form  action="{% url 'WebApp:edit' %}" method="POST" id="editForm">
-	    {% csrf_token %} 
-		First name:  <input type="text" id="fname" name="fname" value="{{ firstname }}"><br><br>
-		Middle name: <input type="text" name="mname" value="{{ middlename }}"><br><br>
-		Last name: <input type="text" name="lname" value="{{ lastname }}"><br><br>
-		Address: <input type="text" name="address" value="{{ address }}"><br><br>
-		Gender: <input type="text" name="gender" value="{{ gender }}"><br><br>
-		Marital Status: <input type="text" name="maritalstatus" value="{{ maritalstatus }}"><br><br>
-		Student Number: <input type="text" name="student_id" value="{{ student_id }}" disabled="true"><br><br>
-		Email : <input type="text" name="email" value="{{ email }}"><br><br>
+	<nav class="navbar navbar-default navbar-fixed">
+	  	<div class="container-fluid">
+		    <div class="navbar-header">
+		    	<a class="navbar-brand" href="#">
+		    		<img alt="Brand" src="{% static 'WebApp/img/uplogo.png' %}" width="50px" height="50px">
+		    	</a>
+		    	<p class="navbar-text">Student Profile</p>
+		    </div>
 
-		Course: <input type="text" name="course" value="{{ course }}"><br><br>
-		Year: <input type="text" name="year" value="{{ year }}"><br><br>
-		STS Bracket: <input type="text" name="sts_code" value="{{ sts_code }}" disabled="true">
-		<br><br><br><br>
-		<input type="submit" name="editprofile" value="Update">
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-	</form>
+		      <ul class="nav navbar-nav navbar-right">
+		      	<li><p class="navbar-text-smaller">Welcome,</p></li>
+		        <li><p class="navbar-text-small">{{user}}</p></li>
+
+
+		        
+		        <li>
+		        	<form class="navbar-form navbar-left" action="{% url 'WebApp:logout' %}">
+		        		<button type="submit" class="btn btn-danger navbar-btn">Log Out</button>
+		        	</form>
+		        </li>
+
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+	  	</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li><a href="{% url 'WebApp:viewIndexS' %}">Profile</a></li>
+				<li class="active"><a href="{% url 'WebApp:edit' %}">Edit Profile</a></li>
+				<li><a href="{% url 'WebApp:schedule' %}">Schedule</a></li>
+				<li><a href="{% url 'WebApp:account' %}">Accountability</a></li>
+				<li><a href="{% url 'WebApp:enlist' %}">Enlist Subjects</a></li>
+
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+									<div class="jumbotron">
+									<h1>Edit Information</h1>
+								<form action="{% url 'WebApp:edit' %}" method="POST">
+			{% csrf_token %}
+				<ul class="nav no-list">
+					<label>Student Number: </label>
+					<input class="form-control" type="text" id="student_id" name="student_id" value="{{ student_id }}" disabled="true">
+					 <br><label>First Name: </label>
+					<input class="form-control" type="text" id="fname" name="fname" value="{{ firstname }}"> 
+					 <br><label>Middle Name: </label>
+					<input class="form-control" type="text" id="mname" name="mname" value="{{ middlename }}"> 
+					 <br><label>Last Name: </label>
+					<input class="form-control" type="text" name="lname" id="lname" value="{{ lastname }}"> 
+					 <br><label>Address: </label>
+					<input class="form-control" type="text" name="address" id="address" value="{{address}}"> 
+					 <br><label>Email Address: </label>
+					<input class="form-control" type="text" name="email" id="email" value="{{ email }}"> 
+					 <br><label>Gender: </label>
+					<input class="form-control" type="text" name="gender" id="gender" value="{{ gender }}"> 
+					 <br><label>Marital Status: </label>
+					<input class="form-control" type="text" name="maritalstatus" id="maritalstatus" value="{{ maritalstatus }}"> 
+				</ul>
+				<br>
+				<br>
+				<ul class="nav no-list">
+					 <br><label>Course: 
+					<input class="form-control" type="text" name="course" id="course" value="{{ course }}"> 
+					 <br><label>Year: 
+					<input class="form-control" type="text" name="year" id="year" value="{{ year }}"> 
+					 <br><label>STS Bracket: 
+					<input class="form-control" type="text" name="sts_code" id="sts_code" value="{{ sts_code }}" disabled="true"> 
+				</ul>
+				<br>
+				<br>
+
+				<button type="submit" name="register" class="btn btn-default">Submit</button>
+			</form>
+
+							</div>
+		</div>
+	</div>
 </body>
 </html>

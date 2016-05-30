@@ -13,53 +13,47 @@ class IndexView(View):
 	def get(self, request):	
 		return render(self.request, 'main.html')
 		
-<<<<<<< HEAD
-class StudentView(View):
-
-	def get(self, request):
-		context = {}
-		context['user'] = request.user
-		return render(self.request,'indexStudent-Profile.html',context=context)
 
 class StudentViewSchedule(View):
 
 	def get(self, request):
 		context = {}
-		context['user'] = request.user
+		context['user'] = request.user.first_name
 		return render(self.request,'indexStudent-Schedule.html',context=context)
 
 class StudentViewAccount(View):
 
 	def get(self, request):
 		context = {}
-		context['user'] = request.user
+		context['user'] = request.user.first_name
 		return render(self.request,'indexStudent-Account.html',context=context)
 
 class StudentEnlist(View):
 
 	def get(self, request):
-		return render(self.request, 'indexStudent-Enlist.html')
+		context = {}
+		context['user'] = request.user.first_name
+		return render(self.request, 'indexStudent-Enlist.html', context=context)
 
 
 	def post(self, request):
+
 		keyword = request.POST.get('searchbox')
 		print("Keyword is: " + keyword)
 		context = {}
 		context['subjectcode'] = Subjects.objects.filter(subject_code__icontains=keyword)
 		return render(self.request,'indexStudent-Enlist.html',context=context)
 
-=======
-
 class StudentView(View):
 	def get(self, request):
 		if not request.user.is_authenticated():
 			return render(self.request, 'login.html')
 		else:
-		 context = {}
-		 context['user'] = request.user
-		return render(self.request,'indexStudent.html',context=context)
->>>>>>> f18589bcfa5e2bb9ed495a81c3be3a5eb1679416
 
+		#User.full_name = property(lambda u: u"%s %s" % (u.first_name, u.last_name))
+		 context = {}
+		 context['user'] = request.user.first_name
+		return render(self.request,'indexStudent-Profile.html',context=context)
 	
 
 class LoginView(View):
@@ -125,10 +119,6 @@ class RegistrationView(View):
 
 		return render(self.request, 'main.html')
 
-<<<<<<< HEAD
-=======
-class SearchClassView(View):
->>>>>>> f18589bcfa5e2bb9ed495a81c3be3a5eb1679416
 
 
 class EditView(View):

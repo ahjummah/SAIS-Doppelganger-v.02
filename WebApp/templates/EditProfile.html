@@ -7,7 +7,7 @@
 
 		<h1>Edit Profile</h1>
 	<br>
-	<form  action="{% url 'WebApp:edit' %}" method="GET" id="editForm">
+	<form  action="{% url 'WebApp:edit' %}" method="POST" id="editForm">
 	    {% csrf_token %} 
 		First name:  <input type="text" id="fname" name="fname" value="{{ firstname }}"><br><br>
 		Middle name: <input type="text" name="mname" value="{{ middlename }}"><br><br>
@@ -15,14 +15,14 @@
 		Address: <input type="text" name="address" value="{{ address }}"><br><br>
 		Gender: <input type="text" name="gender" value="{{ gender }}"><br><br>
 		Marital Status: <input type="text" name="maritalstatus" value="{{ maritalstatus }}"><br><br>
-		Student Number: <input type="text" name="student_id" value="{{ student_id }}"><br><br>
+		Student Number: <input type="text" name="student_id" value="{{ student_id }}" disabled="true"><br><br>
 		Email : <input type="text" name="email" value="{{ email }}"><br><br>
 
 		Course: <input type="text" name="course" value="{{ course }}"><br><br>
 		Year: <input type="text" name="year" value="{{ year }}"><br><br>
-		STS Bracket: <input type="text" name="sts_code" value="{{ sts_code }}">
+		STS Bracket: <input type="text" name="sts_code" value="{{ sts_code }}" disabled="true">
 		<br><br><br><br>
-		<input type="submit" name="register" value="Update">
+		<input type="submit" name="editprofile" value="Update">
 
 	</form>
 </body>

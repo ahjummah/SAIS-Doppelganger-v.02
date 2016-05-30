@@ -12,7 +12,6 @@ class IndexView(View):
 	
 	def get(self, request):	
 		return render(self.request, 'main.html')
-		
 
 class StudentViewSchedule(View):
 
@@ -69,12 +68,12 @@ class StudentView(View):
 		    	}
 		
 		return render(self.request,'indexStudent-Profile.html',dictionary)
-			 
-	
 
+
+=======
 class LoginView(View):
 	"""docstring for LoginView"""
-
+>>>>>>> 73b3b8f1c8002df24147f4db00c2c3ab429ce9bd
 	def get(self, request):
 		if not request.user.is_authenticated():
 			return render(self.request, 'login.html')
@@ -94,6 +93,13 @@ class LoginView(View):
 		else:  # Return an 'invalid login' error message.
 			print("The username and password were incorrect.")
 			return render(self.request, 'login.html')
+
+class LogoutView(View):
+	def get(self, request):
+		return redirect('WebApp:logout')	
+
+	def post(self, request):
+		logout(request, user)
 
 class RegistrationView(View):
 	
@@ -131,6 +137,18 @@ class RegistrationView(View):
 
 		return render(self.request, 'main.html')
 
+class SearchClassView(View):
+
+	def get(self, request):
+		return render(self.request, 'AddClass.html')
+
+	def post(self, request):
+		keyword = request.POST.get('searchbox')
+		print("Keyword is: " + keyword)
+		context = {}
+		context['subjectcode'] = Subjects.objects.filter(subject_code__icontains=keyword)
+		return render(self.request,'AddClass.html',context=context)
+>>>>>>> 73b3b8f1c8002df24147f4db00c2c3ab429ce9bd
 
 
 class EditView(View):

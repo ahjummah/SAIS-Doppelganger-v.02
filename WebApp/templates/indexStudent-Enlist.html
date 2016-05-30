@@ -39,7 +39,6 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><a href="{% url 'WebApp:viewIndexS' %}">Profile</a></li>
-				<li><a href="{% url 'WebApp:edit' %}">Edit Profile</a></li>
 				<li><a href="{% url 'WebApp:schedule' %}">Schedule</a></li>
 				<li><a href="{% url 'WebApp:account' %}">Accountability</a></li>
 				<li class="active"><a href="{% url 'WebApp:enlist' %}">Enlist Subjects</a></li>
@@ -47,12 +46,31 @@
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<div class="jumbotron">
+					  <h1>ADD CLASS:</h1>
 
+					  <form  action="{% url 'WebApp:enlist' %}" method="POST" id="enlistClassForm">
+						{% csrf_token %} 
+						Search: <input type="text" name="searchbox">
+						<input type="submit" name="searchClass">
+						<br><br>
+						Retrieved classes: 
+						<br><br>
+							{{ subjectcode }}
+							<br><br>
+					 
+					 	Add specific class: <input type="text" name="addthisclass">
+					 	<input type="submit" name="addthisclass" value="Add">
+
+
+					</form>
+				</div>
 		</div>
 	</div>
 
 	
 
 
-</body>
+</body> 
+
 </html>

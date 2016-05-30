@@ -165,6 +165,8 @@ class EditView(View):
 		    	'course': schoolinfo_object.get().course,
 		    	'year': schoolinfo_object.get().year,
 		    	'sts_code': schoolinfo_object.get().sts_code,
+		    	'user': request.user.first_name,
+
 		    	}
 		    return render(self.request, 'EditProfile.html', dictionary)
 		else:

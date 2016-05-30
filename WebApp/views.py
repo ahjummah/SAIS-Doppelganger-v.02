@@ -61,9 +61,6 @@ class LoginView(View):
 		user = User()
 		username = request.POST.get('student_id')
 		password = request.POST.get('password')
-		username = Student.objects.get(student_id=username)
-		print(username)
-		username = username.user_id.username
 		user = authenticate(username = username, password =password)
 		if user is not None:
 		    # the password verified for the user		
